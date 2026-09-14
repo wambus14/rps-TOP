@@ -11,7 +11,7 @@ else {return "indesicive"}
 };
 
 function getPlayerChoice() {
-  return  prompt("Your Choice : ")
+  return  prompt(`ROUND ${RoundCount + 1} \nComputer : ${CompScore}, You : ${PlayerScore} | Your Choice?  `)
 };
 let PlayerChoice 
 let CompChoice 
@@ -23,6 +23,7 @@ const actionLog = document.getElementById("log")
 function playRound(CC, PC){
     console.log(`ROUND : ${RoundCount + 1}`)
     console.log("computer " + CC)
+    actionLog.innerHTML += `<br> ROUND : ${RoundCount + 1}<br> Computer ${CC} - You ${PC}`
   
    RoundCount ++;
 
@@ -50,19 +51,20 @@ PlayerChoice = getPlayerChoice()
 CompChoice = getComputerChoice()
 playRound(CompChoice,PlayerChoice)
 console.log(`Computer : ${CompScore}, You : ${PlayerScore}`)
+actionLog.innerHTML += `<br>Computer : ${CompScore}, You : ${PlayerScore} <br> `
     }
 
 if(CompScore === PlayerScore) {
         console.log("you tied :P")
-        actionLog.innerHTML = "you tied"
+        actionLog.innerHTML = "you tied??"
     }
 else if (Math.max(CompScore,PlayerScore) == CompScore) {
     console.log("you LOSE hahaha")
-    actionLog.innerHTML = "<br> you LOSE hahaha"
+    actionLog.innerHTML += "<br> you LOSE hahaha"
 }
 else if (Math.max(CompScore, PlayerScore) == PlayerScore) {
     console.log("yay you WIN")
-    actionLog.innerHTML ="<br> you win yay"
+    actionLog.innerHTML +="<br> you win yay"
 }
 
 };
