@@ -18,12 +18,14 @@ let CompChoice
 let CompScore = 0
 let PlayerScore = 0
 let RoundCount = 0
+const actionLog = document.getElementById("log")
 
 function playRound(CC, PC){
     console.log(`ROUND : ${RoundCount + 1}`)
     console.log("computer " + CC)
-
+  
    RoundCount ++;
+
 if (CC === PC){console.log("tie")
     return "tie"
 }
@@ -36,7 +38,7 @@ else if (CC == "paper" && PC.toLowerCase() == "scissors" || CC == "scissors" && 
 PlayerScore += 1
 }    
 else {console.log( "still works")}
-
+  
 };
 
 function playGame(){
@@ -49,12 +51,18 @@ CompChoice = getComputerChoice()
 playRound(CompChoice,PlayerChoice)
 console.log(`Computer : ${CompScore}, You : ${PlayerScore}`)
     }
-    if(CompScore === PlayerScore){console.log("you tied :P")}
-else if (Math.max(CompScore,PlayerScore) == CompScore){
+
+if(CompScore === PlayerScore) {
+        console.log("you tied :P")
+        actionLog.innerHTML = "you tied"
+    }
+else if (Math.max(CompScore,PlayerScore) == CompScore) {
     console.log("you LOSE hahaha")
+    actionLog.innerHTML = "<br> you LOSE hahaha"
 }
 else if (Math.max(CompScore, PlayerScore) == PlayerScore) {
     console.log("yay you WIN")
+    actionLog.innerHTML ="<br> you win yay"
 }
 
 };
